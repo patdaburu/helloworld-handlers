@@ -35,6 +35,7 @@ export class HelloWorldHandler {
     }
 }
 
+// tslint:disable no-comment-code
 // export
-const helloWorldHandler = new HelloWorldHandler();
-export default helloWorldHandler.GetRouter();
+// const helloWorldHandler = new HelloWorldHandler();
+// export default helloWorldHandler.GetRouter();
