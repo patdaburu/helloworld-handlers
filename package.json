@@ -4,7 +4,7 @@
   "description": "Handlers for HelloWorld Example",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "npm run nsp & npm run clean && npm run lint && npm run test && npm run build && npm run rebuild:lib",
+    "prepublishOnly": "npm run nsp & npm run clean && npm run lint && npm run test && npm run build && npm run build:lib",
     "clean": "npm run clean:coverage && npm run clean:dist && npm run clean:lib",
     "clean:dist": "rm -rf dist",
     "clean:lib": "rm -rf lib",
