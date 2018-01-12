@@ -1,0 +1,82 @@
+{
+  "name": "helloworld-handlers",
+  "version": "1.0.0",
+  "description": "Handlers for HelloWorld Example",
+  "main": "index.js",
+  "scripts": {
+    "prepublishOnly": "npm run nsp & npm run clean && npm run lint && npm run test && npm run build",
+    "clean": "npm run clean:coverage && npm run clean:dist",
+    "clean:dist": "rm -rf dist",
+    "clean:coverage": "rm -rf coverage && rm -rf .nyc_output",
+    "build": "npm run tsc && npm run build:doc",
+    "build:doc": "./node_modules/typedoc/bin/typedoc --out ./docs ./src",
+    "tsc": "./node_modules/typescript/bin/tsc --project .",
+    "tsc:watch": "./node_modules/typescript/bin/tsc -w --project .",
+    "rebuild": "npm run clean && npm run build",
+    "start": "node ./dist/index.js",
+    "monitor": "./node_modules/nodemon/bin/nodemon.js ./dist/index.js",
+    "lint": "./node_modules/tslint/bin/tslint --project .",
+    "nsp": "./node_modules/nsp/bin/nsp check",
+    "test": "npm run clean:coverage && nyc mocha  --timeout=12000 -r ts-node/register --recursive './**/*.spec.ts'"
+  },
+  "nyc": {
+    "check-coverage": false,
+    "per-file": false,
+    "lines": 95,
+    "statements": 95,
+    "functions": 95,
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "src/index.ts",
+      "**/*.d.ts",
+      "**/*.spec.ts",
+      "coverage",
+      "dist",
+      "test",
+      "docs"
+    ],
+    "reporter": [
+      "html",
+      "text",
+      "text-summary",
+      "lcov"
+    ],
+    "all": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patdaburu/helloworld-handlers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patdaburu/helloworld-handlers/issues"
+  },
+  "homepage": "https://github.com/patdaburu/helloworld-handlers#readme",
+  "devDependencies": {
+    "@types/chai": "^4.0.6",
+    "@types/mocha": "^2.2.44",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.14.3",
+    "nsp": "^3.1.0",
+    "nyc": "^11.3.0",
+    "source-map-support": "^0.5.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "tslint-sonarts": "^1.2.0",
+    "typedoc": "^0.9.0",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "@nertz/hello-world": "^0.1.0",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "helmet": "^3.9.0"
+  }
+}
