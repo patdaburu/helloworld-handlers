@@ -4,7 +4,7 @@ import { NextFunction, Request,  Response, Router } from 'express';
 // tslint:disable object-literal-sort-keys
 // tslint:disable object-literal-shorthand
 // tslint:disable no-identical-functions
-export class HelloWorldRouter {
+export class HelloWorldHandler {
     public router: Router;
     private helloM: HelloMiddleware;
 
@@ -36,5 +36,5 @@ export class HelloWorldRouter {
 }
 
 // export
-const helloWorldHandler = new HelloWorldRouter();
+const helloWorldHandler = new HelloWorldHandler();
 export default helloWorldHandler.GetRouter();
