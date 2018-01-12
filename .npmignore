@@ -4,6 +4,7 @@
 /tmp
 /out-tsc
 
+
 # dependencies
 /node_modules
 
@@ -61,8 +62,6 @@ coverage
 .idea
 .editorconfig
 
-#source files
-src
 
 #typescript
 tsconfig.json
