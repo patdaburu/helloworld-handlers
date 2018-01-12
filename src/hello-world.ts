@@ -5,8 +5,8 @@ import { NextFunction, Request,  Response, Router } from 'express';
 // tslint:disable object-literal-shorthand
 // tslint:disable no-identical-functions
 export class HelloWorldRouter {
-    private helloM: HelloMiddleware;
     public router: Router;
+    private helloM: HelloMiddleware;
 
     constructor() {
         this.router = Router();
