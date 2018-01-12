@@ -1,15 +1,18 @@
 {
-  "name": "helloworld-handlers",
+  "name": "@nertz/helloworld-handlers-v1",
   "version": "1.0.0",
   "description": "Handlers for HelloWorld Example",
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "npm run nsp & npm run clean && npm run lint && npm run test && npm run build",
-    "clean": "npm run clean:coverage && npm run clean:dist",
+    "prepublishOnly": "npm run nsp & npm run clean && npm run lint && npm run test && npm run build && npm run rebuild:lib",
+    "clean": "npm run clean:coverage && npm run clean:dist && npm run clean:lib",
     "clean:dist": "rm -rf dist",
+    "clean:lib": "rm -rf lib",
     "clean:coverage": "rm -rf coverage && rm -rf .nyc_output",
-    "build": "npm run tsc && npm run build:doc",
-    "build:doc": "./node_modules/typedoc/bin/typedoc --out ./docs ./src",
+    "build": "npm run tsc && npm run build:lib && npm run build:doc",
+    "build:lib": "npm run copy:lib",
+    "build:doc": "./node_modules/typedoc/bin/typedoc --out ./docs ./lib",
+    "copy:lib": "mkdir -p lib && cp -a src/. lib",
     "tsc": "./node_modules/typescript/bin/tsc --project .",
     "tsc:watch": "./node_modules/typescript/bin/tsc -w --project .",
     "rebuild": "npm run clean && npm run build",
@@ -17,7 +20,7 @@
     "monitor": "./node_modules/nodemon/bin/nodemon.js ./dist/index.js",
     "lint": "./node_modules/tslint/bin/tslint --project .",
     "nsp": "./node_modules/nsp/bin/nsp check",
-    "test": "npm run clean:coverage && nyc mocha  --timeout=12000 -r ts-node/register --recursive './**/*.spec.ts'"
+    "test": "npm run clean:coverage && nyc mocha -r ts-node/register --recursive './**/*.spec.ts'"
   },
   "nyc": {
     "check-coverage": false,
