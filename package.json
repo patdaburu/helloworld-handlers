@@ -16,7 +16,7 @@
     "rebuild": "npm run clean && npm run build",
     "start": "node ./dist/index.js",
     "monitor": "./node_modules/nodemon/bin/nodemon.js ./dist/index.js",
-    "lint": "./node_modules/tslint/bin/tslint",
+    "lint": "./node_modules/tslint/bin/tslint --project .",
     "nsp": "./node_modules/nsp/bin/nsp check",
     "test": "npm run clean:coverage && nyc mocha -r ts-node/register --recursive './**/*.spec.ts'"
   },
