@@ -8,6 +8,9 @@ yarn-error.log*
 
 # Lib
 lib
+dist
+docs
+.idea
 
 # Runtime data
 pids
