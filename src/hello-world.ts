@@ -1,5 +1,5 @@
-import { NextFunction, Request,  Response, Router } from 'express';
 import { HelloMiddleware } from '@nertz/hello-world';
+import { NextFunction, Request,  Response, Router } from 'express';
 
 // tslint:disable object-literal-sort-keys
 // tslint:disable object-literal-shorthand
